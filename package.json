@@ -1,0 +1,29 @@
+{
+  "name": "lib-sass-data-uri",
+  "version": "0.0.1",
+  "description": "This package provides a function for lib-sass to embedd files inside css by converting them into data uri's. This works with fonts, images and others.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fragsalat/lib-sass-data-uri.git"
+  },
+  "keywords": [
+    "lib-sass",
+    "libsass",
+    "sass",
+    "scss",
+    "inline",
+    "embedd",
+    "dataURI",
+    "base64"
+  ],
+  "author": "Thomas Schlage",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fragsalat/lib-sass-data-uri/issues"
+  },
+  "homepage": "https://github.com/fragsalat/lib-sass-data-uri#readme"
+}
