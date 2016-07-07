@@ -35,7 +35,7 @@ JSPM: jspm:font-awesome/fonts/fontawesome-webfont.woff
 **data-uri($filePath)** Convertes the file content into a data uri and returns it as string
 
 ##### Example
-```
+```scss
 @font-face {
     font-family: "fontawesome";
     src: url(data-uri('jspm:font-awesome/fonts/fontawesome-webfont.woff!text')) format('woff'),
@@ -43,7 +43,7 @@ JSPM: jspm:font-awesome/fonts/fontawesome-webfont.woff
 }
 ```
 Result
-```
+```css
 @font-face {
     font-family: "fontawesome";
     src: url(data:application/font-woff;base64,<base64EncodedString>) format('woff'),
