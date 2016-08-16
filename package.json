@@ -25,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/fragsalat/lib-sass-data-uri/issues"
   },
-  "homepage": "https://github.com/fragsalat/lib-sass-data-uri#readme"
+  "homepage": "https://github.com/fragsalat/lib-sass-data-uri#readme",
+  "dependencies": {
+    "mime-types": "^2.1.11",
+    "node-sass": "^3.8.0"
+  }
 }
