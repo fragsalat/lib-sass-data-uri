@@ -9,7 +9,12 @@ try {
 }
 catch (e) { }
 
+var cachedPromises = {};
+
 function loadFile(filePath) {
+    if (cachedPromises[filePath]) {
+        return cachedPromises[filePath];
+    }
     var promise;
     // Handle jspm urls
     if (filePath.substr(0, 5) === 'jspm:') {
@@ -23,7 +28,7 @@ function loadFile(filePath) {
         promise = Promise.resolve(path.isAbsolute(filePath) ? filePath : path.join(process.cwd(), filePath));
     }
 
-    return new Promise((resolve, reject) => {
+    return cachedPromises[filePath] = new Promise((resolve, reject) => {
         promise.then(absolutePath => {
             var normalizedPath = path.normalize(absolutePath).replace(/^file\:|\!.*$/g, '');
             fs.readFile(normalizedPath, (error, content) => {
@@ -38,7 +43,6 @@ function fileToDataURI(filePath) {
     return loadFile(filePath).then((file) => {
         var mimeType = mime.lookup(file.normalizedPath);
         var base64 = file.content.toString('base64');
-        console.log(mimeType, base64.length);
         return `data:${mimeType};base64,${base64}`;
     }, error => {
         console.error(error.toString());
