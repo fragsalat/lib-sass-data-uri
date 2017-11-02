@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/fragsalat/lib-sass-data-uri#readme",
   "dependencies": {
-    "mime-types": "^2.1.11",
-    "node-sass": "^3.8.0"
+    "mime-types": "^2.1.11"
   }
 }
