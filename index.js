@@ -42,8 +42,20 @@ function fileToDataURI(filePath) {
     filePath = filePath && filePath.getValue() || filePath;
     return loadFile(filePath).then((file) => {
         var mimeType = mime.lookup(file.normalizedPath);
-        var base64 = file.content.toString('base64');
-        return `data:${mimeType};base64,${base64}`;
+
+        var encoded = 'base64,' + file.content.toString('base64');
+
+        // Try URL encoding to see if it saves bytes.
+        let utf8Decoded = file.content.toString('utf8');
+        let isValidUtf8 = (Buffer.compare(new Buffer(utf8Decoded, 'utf8'), file.content) === 0);
+        if (isValidUtf8) {
+            let urlEncoded = 'charset=utf-8,' + escape(utf8Decoded);
+            if (urlEncoded.length < encoded.length) {
+                encoded = urlEncoded;
+            }
+        }
+
+        return `data:${mimeType};${encoded}`;
     }, error => {
         console.error(error.toString());
     });
