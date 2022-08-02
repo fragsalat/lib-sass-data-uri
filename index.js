@@ -1,8 +1,20 @@
-var sass = require('node-sass');
+var sass;
 var fs = require('fs');
 var path = require('path');
 var mime = require('mime-types');
 var jspm;
+
+try {
+    sass = require('sass');
+}
+catch(e) { }
+
+if (!sass) {
+    try {
+        sass = require('node-sass');
+    }
+    catch(e) { throw new Error('Cannot find either sass or node-sass'); }
+}
 
 try {
     jspm = require('jspm');
